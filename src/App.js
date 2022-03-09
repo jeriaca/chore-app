@@ -2,6 +2,7 @@ import { dividerClasses, Button } from '@mui/material';
 import { func } from 'prop-types';
 import { Fragment } from 'react';
 import './App.css';
+import {Routes, Route} from 'react-router-dom';
 
 function App() {
 
@@ -54,16 +55,15 @@ function App() {
 
   return (
     <div className="App">
-      <Button variant="contained">
-        Task List
-      </Button>
-      <Home />
-      <Gentle />
-      <QuickTips />
-      <Main />
-      <CreateList />
-      <ViewEditList />
-      <Stats />
+      <Routes>
+        <Route path ="/" element={<Home />}/>
+        <Route path ="gentle" element={<Gentle />} />
+        <Route path="quick" element={<QuickTips />} />
+        <Route path="main" element={<Main />} />
+        <Route path="create" element={<CreateList />} />
+        <Route path="view" element={<ViewEditList />} />
+        <Route path="stats" element={<Stats />} />
+      </Routes>
     </div>
   );
 };
