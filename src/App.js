@@ -5,6 +5,11 @@ import './App.css';
 import {Routes, Route} from 'react-router-dom';
 import { Home } from './Home';
 import { Main } from './Main';
+import { View } from './View';
+import { Stats } from './Stats';
+import { Create }  from './Create';
+import { QuickEasy } from './QuickEasy';
+import { Gentle } from './Gentle';
 
 function App() {
 
@@ -13,6 +18,7 @@ function App() {
       end: "2022-02-14T15:20:00",
       room: "kitchen",
       task: "clean countertops",
+      difficulty: 2,
       complete: true
   };
   const task2 = {
@@ -20,25 +26,45 @@ function App() {
       end: "2022-02-14T15:29:00",
       room: "kitchen",
       task: "sweep floor",
+      difficulty: 3,
       complete: true
   };
   const task3 = {
-      start: "2022-02-14T15:30:30",
-      end: "2022-02-14T15:45:00",
+      start: null,
+      end: null,
       room: "kitchen",
       task: "dishes",
+      difficulty: null,
       complete: false
   };
   const task4 = {
-      start: "2022-02-14T15:55:30",
-      end: "2022-02-14T16:01:00",
+      start: null,
+      end: null,
       room: "living room",
       task: "vacuum",
+      difficulty: null,
       complete: false
   };
+  const task5 = {
+    start: "2022-03-03T12:20:00",
+    end: "2022-03-03T12:23:07",
+    room: "living room",
+    task: "quick pickup",
+    difficulty: 1,
+    complete: true
+  };
+  const task6 = {
+    start: "2022-02-14T15:30:30",
+    end: "2022-02-14T15:45:00",
+    room: "kitchen",
+    task: "dishes",
+    difficulty: 3,
+    complete: true
+  };
+
   
   let taskList = [
-      task1, task2, task3, task4
+      task1, task2, task3, task4, task5, task6
   ];
 
   const activeTasks = taskList.filter(x => x.room === "kitchen");
@@ -47,33 +73,15 @@ function App() {
 
   console.log(tasks);
 
-  const Gentle = () => <h2>Gentle</h2>;
-  const QuickTips = () => <h2>Quick Tidy Tips</h2>;
-  const CreateList = () => <h2>Create New List</h2>;
-  
-  const ViewEditList = ({tasks}) => {
-    console.log(tasks);
-
-    return (
-      <>
-        <h2>View and Edit Lists</h2>
-        {tasks.map(x => <h3>{x}</h3>)}
-      </>
-
-      );
-  };
- 
-  const Stats = () => <h2>Stats</h2>;
-
   return (
     <div className="App">
       <Routes>
         <Route path ="/" element={<Home />}/>
         <Route path ="gentle" element={<Gentle />} />
-        <Route path="quick" element={<QuickTips />} />
+        <Route path="quickeasy" element={<QuickEasy />} />
         <Route path="main" element={<Main />} />
-        <Route path="create" element={<CreateList />} />
-        <Route path="view" element={<ViewEditList tasks={tasks} />} />
+        <Route path="create" element={<Create />} />
+        <Route path="view" element={<View />} />
         <Route path="stats" element={<Stats />} />
       </Routes>
     </div>

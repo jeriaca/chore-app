@@ -24,6 +24,7 @@ export const Home = () => {
 					<Button 
 						color="secondary" 
 						variant="contained"
+						onClick={() => 	nav("/Gentle")}
 					>
 						Not so good
 					</Button>
