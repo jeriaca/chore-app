@@ -3,6 +3,8 @@ import { func } from 'prop-types';
 import { Fragment } from 'react';
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
+import { Home } from './Home';
+import { Main } from './Main';
 
 function App() {
 
@@ -45,12 +47,22 @@ function App() {
 
   console.log(tasks);
 
-  const Home = () => <h2>Home</h2>;
   const Gentle = () => <h2>Gentle</h2>;
   const QuickTips = () => <h2>Quick Tidy Tips</h2>;
-  const Main = () => <h2>Main Menu</h2>;
   const CreateList = () => <h2>Create New List</h2>;
-  const ViewEditList = () => <h2>View and Edit Lists</h2>;
+  
+  const ViewEditList = ({tasks}) => {
+    console.log(tasks);
+
+    return (
+      <>
+        <h2>View and Edit Lists</h2>
+        {tasks.map(x => <h3>{x}</h3>)}
+      </>
+
+      );
+  };
+ 
   const Stats = () => <h2>Stats</h2>;
 
   return (
@@ -61,7 +73,7 @@ function App() {
         <Route path="quick" element={<QuickTips />} />
         <Route path="main" element={<Main />} />
         <Route path="create" element={<CreateList />} />
-        <Route path="view" element={<ViewEditList />} />
+        <Route path="view" element={<ViewEditList tasks={tasks} />} />
         <Route path="stats" element={<Stats />} />
       </Routes>
     </div>
