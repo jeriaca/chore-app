@@ -5,7 +5,8 @@
     return (
       <>
         <h2>View and Edit Lists</h2>
-        
+
+          {tasks.map(x => <h3>{x}</h3>)}
       </>
 
       );
