@@ -4,14 +4,10 @@
 
     return (
       <>
-        <h2>View and Edit Lists</h2>
+        <h2>View and Edit Tasks</h2>
 
           {tasks.map(x => <h3>{x}</h3>)}
       </>
 
       );
   };
-
-//   tasks={tasks} 
-
-// {tasks.map(x => <h3>{x}</h3>)}

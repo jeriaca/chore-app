@@ -1,13 +1,13 @@
 import { Button } from "@mui/material";
 
-export const Create = ({addTask}) => { 
+export const Add = ({addTask}) => { 
 	
 	const addMyTask = () => {
 		addTask("dummy"); 
 	};
 	return(
 		<>
-			<h2>Create New List</h2>
+			<h2>Add New Task</h2>
 			<Button
 				onClick = {addMyTask}
 			>

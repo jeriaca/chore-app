@@ -1,4 +1,4 @@
-import { dividerClasses, Button } from '@mui/material';
+import { dividerClasses, Button, Breadcrumbs, Link } from '@mui/material';
 import { func } from 'prop-types';
 import { Fragment, useState } from 'react';
 import './App.css';
@@ -7,7 +7,7 @@ import { Home } from './Home';
 import { Main } from './Main';
 import { View } from './View';
 import { Stats } from './Stats';
-import { Create }  from './Create';
+import { Add }  from './Add';
 import { QuickEasy } from './QuickEasy';
 import { Gentle } from './Gentle';
 
@@ -69,11 +69,11 @@ let taskList = [
 function App() {
 
   const [realTasks, setRealTasks] = useState([])
+
   const activeTasks = taskList.filter(x => x.room === "kitchen");
   const completedTasks = taskList.filter(x => x.complete === true);
   const tasks = taskList.map(taskItem => taskItem.task);
 
-  console.log(tasks);
   const addTask = (t) => {
     setRealTasks([
       ...realTasks
@@ -88,8 +88,9 @@ function App() {
         <Route path ="gentle" element={<Gentle />} />
         <Route path="quickeasy" element={<QuickEasy />} />
         <Route path="main" element={<Main />} />
-        <Route path="create" element={<Create 
-          addTask = {addTask} />} />
+        <Route path="add" element={<Add
+          addTask = {addTask} 
+        />} />
         <Route path="view" element={<View 
           tasks={realTasks}
         />} />
