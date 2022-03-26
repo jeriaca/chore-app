@@ -65,21 +65,27 @@ let taskList = [
   task1, task2, task3, task4, task5, task6
 ];
 
+const activeTasks = taskList.filter(x => x.complete === false);
+const completedTasks = taskList.filter(x => x.complete === true);
+const countOfCompletedTasks = completedTasks.length;
+const countOfActiveTasks = activeTasks.length;
+
+const tasks = taskList.map(taskItem => taskItem.task);
+
 
 function App() {
-
   const [realTasks, setRealTasks] = useState([])
 
-  const activeTasks = taskList.filter(x => x.room === "kitchen");
-  const completedTasks = taskList.filter(x => x.complete === true);
-  const tasks = taskList.map(taskItem => taskItem.task);
-
+  
   const addTask = (t) => {
     setRealTasks([
       ...realTasks
       , t
     ]);
   };
+
+  console.log("Active Tasks:", activeTasks.length);
+  console.log("Completed Tasks:", completedTasks.length);
 
   return (
     <div className="App">
@@ -88,13 +94,22 @@ function App() {
         <Route path ="gentle" element={<Gentle />} />
         <Route path="quickeasy" element={<QuickEasy />} />
         <Route path="main" element={<Main />} />
-        <Route path="add" element={<Add
-          addTask = {addTask} 
-        />} />
-        <Route path="view" element={<View 
-          tasks={realTasks}
-        />} />
-        <Route path="stats" element={<Stats />} />
+        <Route path="add" element={
+          <Add
+            addTask = {addTask} 
+          />
+        } />
+        <Route path="view" element={
+          <View 
+            tasks={realTasks}
+          />
+        } />
+        <Route path="stats" element={
+          <Stats 
+            countOfCompletedTasks={countOfCompletedTasks}
+            countOfActiveTasks={countOfActiveTasks}
+          />
+        } />
       </Routes>
     </div>
   );

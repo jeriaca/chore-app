@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
 
-		const nav = useNavigate();
+	const nav = useNavigate();
     return (
         <>
 					<h2>Welcome!</h2> 
