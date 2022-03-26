@@ -49,7 +49,7 @@ end: "2022-03-03T12:23:07",
 room: "living room",
 task: "quick pickup",
 difficulty: 1,
-complete: true
+complete: false
 };
 const task6 = {
 start: "2022-02-14T15:30:30",
@@ -70,8 +70,7 @@ const completedTasks = taskList.filter(x => x.complete === true);
 const countOfCompletedTasks = completedTasks.length;
 const countOfActiveTasks = activeTasks.length;
 
-const tasks = taskList.map(taskItem => taskItem.task);
-
+const originalTasks = activeTasks.map(taskItem => taskItem.task);
 
 function App() {
   const [realTasks, setRealTasks] = useState([])
@@ -101,7 +100,8 @@ function App() {
         } />
         <Route path="view" element={
           <View 
-            tasks={realTasks}
+            tasks = {realTasks}
+            originalTasks = {originalTasks}
           />
         } />
         <Route path="stats" element={
