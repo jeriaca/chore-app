@@ -2,7 +2,7 @@
   "name": "chore-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jeriaca.github.io/chore-app/",
+  "homepage": "https://jeriaca.github.io/chore-app",
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
