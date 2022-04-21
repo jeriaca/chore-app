@@ -2,14 +2,14 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-export const Add = ({addTask}) => { 
-	const [newTask, setNewTask] = useState([])
+export const Tasks = ({addTask, tasks, originalTasks}) => { 
+  const nav = useNavigate();
+
+  const [newTask, setNewTask] = useState([])
 
 	const addMyTask = () => {
 		addTask(newTask); 
 	};
-
-	const nav = useNavigate();
 
 	return(
 		<>
@@ -31,13 +31,26 @@ export const Add = ({addTask}) => {
 				</Button>
 			</form>
 
-			<Button
-					color="success"
-					variant="contained"
-					onClick={() => nav("/View")}
-				>
-					View Task List
-				</Button>
+			<h2>Current Tasks:</h2>
+        <ul>
+        {tasks.map(x => <h3>{x}</h3>)}
+
+        </ul>
+        
+				{originalTasks.map(y =><h3>{y}</h3>)}
+        
+        <Button
+          variant="contained"
+          onClick={() => nav("/Stats")}
+        >
+          View Completed Tasks
+        </Button>
+        <Button
+        variant="contained"
+        onClick={() => nav("/Main")}
+        >
+          Back to Main Page
+        </Button>
 			</div>
 		</>
 	);

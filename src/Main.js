@@ -9,15 +9,9 @@ export const Main = () => {
 			<h2>Main Menu</h2>
 			<Button
 				variant="contained"
-				onClick={() => 	nav("/Add")}
+				onClick={() => 	nav("/Tasks")}
 			>
-				Add New Task
-			</Button>
-			<Button
-				variant="contained"
-				onClick={() => 	nav("/View")}
-			>
-				View List
+				View and Edit Tasks
 			</Button>
 			<Button
 				variant="contained"

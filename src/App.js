@@ -5,11 +5,10 @@ import './App.css';
 import {Routes, Route} from 'react-router-dom';
 import { Home } from './Home';
 import { Main } from './Main';
-import { View } from './View';
 import { Stats } from './Stats';
-import { Add }  from './Add';
 import { QuickEasy } from './QuickEasy';
 import { Gentle } from './Gentle';
+import { Tasks } from './Tasks';
 
 const task1 = {
   start: "2022-02-14T15:14:30",
@@ -74,7 +73,6 @@ const originalTasks = activeTasks.map(taskItem => taskItem.task);
 
 function App() {
   const [realTasks, setRealTasks] = useState([])
-
   
   const addTask = (t) => {
     setRealTasks([
@@ -93,21 +91,17 @@ function App() {
         <Route path ="gentle" element={<Gentle />} />
         <Route path="quickeasy" element={<QuickEasy />} />
         <Route path="main" element={<Main />} />
-        <Route path="add" element={
-          <Add
-            addTask = {addTask} 
-          />
-        } />
-        <Route path="view" element={
-          <View 
-            tasks = {realTasks}
-            originalTasks = {originalTasks}
-          />
-        } />
         <Route path="stats" element={
           <Stats 
             countOfCompletedTasks={countOfCompletedTasks}
             countOfActiveTasks={countOfActiveTasks}
+          />
+        } />
+        <Route path="tasks" element={
+          <Tasks
+            addTask = {addTask} 
+            tasks = {realTasks}
+            originalTasks = {originalTasks}
           />
         } />
       </Routes>

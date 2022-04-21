@@ -1,7 +1,6 @@
 .App {
   text-align: center;
-  font-family: 'Poppins', sans-serif;
-  height: 100vh;
+  font-family: 'Poppins', sans-serif; 
 }
 
 .App-logo {
@@ -51,13 +50,36 @@
   border-radius: 4em;
 }
 
-.homePage {
+/* .homePage {
   background-color: wheat;
-}
+} */
 
 .homePage h1 {color: rgb(36, 157, 168);}
-.homePage h2 {color: rgb(55, 126, 126);}
+.homePage h2, .addTask h2 {color: rgb(55, 126, 126);}
 
 .good {background-color: #5c94ed;}
 .okay {background-color: indigo;}
 .meh  {background-color: slateblue;}
+
+
+.addTask {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.addTask form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.addTask textarea, .addTask select {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.addTask label {
+  font-size: 1.5em;
+}
