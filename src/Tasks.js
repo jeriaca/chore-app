@@ -1,6 +1,9 @@
-import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+
+import Button from "@mui/material/Button";
+import DeleteIcon from '@mui/icons-material/Delete';
+import DoneOutline from "@mui/icons-material/DoneOutline";
 
 export const Tasks = ({addTask, tasks, originalTasks}) => { 
   const nav = useNavigate();
@@ -32,10 +35,17 @@ export const Tasks = ({addTask, tasks, originalTasks}) => {
 			</form>
 
 			<h2>Current Tasks:</h2>
-        <ul>
-        {tasks.map(x => <h3>{x}</h3>)}
-
-        </ul>
+      <div className="Task-List">
+           {tasks.map(x => 
+                <p
+                  className="Task-List-Item"
+                >
+                 {x} <DoneOutline/> <DeleteIcon />
+                </p>                
+              ) 
+            }
+           
+        </div>
         
 				{originalTasks.map(y =><h3>{y}</h3>)}
         
