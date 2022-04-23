@@ -9,6 +9,7 @@ import { Stats } from './Stats';
 import { QuickEasy } from './QuickEasy';
 import { Gentle } from './Gentle';
 import { Tasks } from './Tasks';
+import { Sandbox } from './Sandbox';
 
 const task1 = {
   start: "2022-02-14T15:14:30",
@@ -99,6 +100,13 @@ function App() {
         } />
         <Route path="tasks" element={
           <Tasks
+            addTask = {addTask} 
+            tasks = {realTasks}
+            originalTasks = {originalTasks}
+          />
+        } />
+        <Route path="sandbox" element={
+          <Sandbox
             addTask = {addTask} 
             tasks = {realTasks}
             originalTasks = {originalTasks}

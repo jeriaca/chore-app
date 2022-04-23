@@ -7,7 +7,7 @@ import DoneOutline from "@mui/icons-material/DoneOutline";
 import Tooltip from "@mui/material/Tooltip";
 import Box from "@mui/material/Box";
 
-export const Tasks = ({addTask, tasks, originalTasks}) => { 
+export const Sandbox = ({addTask, tasks, originalTasks}) => { 
   const nav = useNavigate();
 
   const [newTask, setNewTask] = useState([])
@@ -18,7 +18,15 @@ export const Tasks = ({addTask, tasks, originalTasks}) => {
 
 	return(
 		<>
-			<div className="addTask">
+			<Box
+        sx={{
+          width:{
+            md: 700,
+          },
+          mx: "auto",
+        }}
+      
+      >
 			<h2>Add New Task</h2>
 			<form onSubmit={addMyTask}>
 				<label for="new-task">Task</label>
@@ -65,7 +73,7 @@ export const Tasks = ({addTask, tasks, originalTasks}) => {
         >
           Back to Main Page
         </Button>
-			</div>
+			</Box>
 		</>
 	);
 };
