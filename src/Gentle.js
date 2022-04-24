@@ -1,4 +1,4 @@
-import { button } from "@mui/material";
+import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export const Gentle = () => {
@@ -8,17 +8,20 @@ export const Gentle = () => {
 		<>
 			<div className="Gentle">
 				<h2>Gentle</h2>
-				<button
+				<Button
+					variant="contained"
+					color="secondary"
 					onClick={() => 	nav("/QuickEasy")}
 				>
 					View Quick and Easy Tasks
-				</button>
+				</Button>
 
-				<button
+				<Button
+				variant="contained"
 				onClick={() => 	nav("/Main")}
 				>
 					Main Menu
-				</button>
+				</Button>
 			</div>
 		</>
 	);

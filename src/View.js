@@ -1,24 +1,46 @@
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-  export const View = ({tasks, originalTasks}) => {
-    console.log(tasks);
+  export const View = ({taskList}) => {
+    
+    console.log(taskList);
 
 		const nav = useNavigate();
 
     return (
       <>
-        <h2>View and Edit Tasks</h2>
+        <h1>Tasks</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Room</th>
+              <th>Difficulty</th>
+            </tr>
+          </thead>
+          <tbody>
+          {/*   {tasklist.map(x => 
+                <tr>{x.task}</tr>
+              )
+            }
+            {tasklist.map(x => 
+                <tr>{x.room}</tr>
+              )
+            }
+            {tasklist.map(x => 
+                <tr>{x.difficulty}</tr>
+              )
+            } */}
+          </tbody>
+        </table>
+       
 
-        {tasks.map(x => <h3>{x}</h3>)}
-				{originalTasks.map(y =><h3>{y}</h3>)}
-        
 				<Button
 					color="success"
 					variant="contained"
-					onClick={() => nav("/Add")}
+					onClick={() => nav("/Tasks")}
 				>
-					Add new tasks
+					Add Tasks
 				</Button>
 
       </>

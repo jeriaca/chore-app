@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneOutline from "@mui/icons-material/DoneOutline";
 import Tooltip from "@mui/material/Tooltip";
-import Box from "@mui/material/Box";
 
 export const Tasks = ({addTask, tasks, originalTasks}) => { 
   const nav = useNavigate();
@@ -16,54 +15,83 @@ export const Tasks = ({addTask, tasks, originalTasks}) => {
 		addTask(newTask); 
 	};
 
+	console.log(tasks);
+
 	return(
 		<>
 			<div className="addTask">
-			<h2>Add New Task</h2>
-			<form onSubmit={addMyTask}>
-				<label for="new-task">Task</label>
-				<textarea
-					id="new-task"
-					placeholder="enter task"
-					value={newTask}
-					onChange={e => setNewTask(e.target.value)}
-				/>
-				<Button 
-					type="submit"
-					variant="contained"
-				>
-						Add task
-				</Button>
-			</form>
+				<h1>Current Tasks</h1>
+				<div className="Task-List">
+						{tasks.map(x => 
+								<p
+									className="Task-List-Item"
+								>
+									<div id="left">{x}</div>
+								 
+									<div id="right">
+										<Tooltip title="mark complete" placement="bottom"><DoneOutline className="icon"/></Tooltip>  
+										<Tooltip title="delete"><DeleteIcon className="icon" /></Tooltip>
+									</div>
+								</p>                
+							) 
+						}
 
-			<h2>Current Tasks:</h2>
-      <div className="Task-List">
-           {tasks.map(x => 
-                <p
-                  className="Task-List-Item"
-                >
-                 {x} 
-                 <Tooltip title="mark complete" placement="bottom"><DoneOutline/></Tooltip>  
-                 <Tooltip title="delete"><DeleteIcon /></Tooltip>
-                </p>                
-              ) 
-            }
-           
-        </div>
-        
-				{originalTasks.map(y =><h3>{y}</h3>)}
-        
+				</div>
+				{/* {originalTasks.map(y =><h3>{y}</h3>)} */}
+					
+				<h1>Add New Task</h1>
+				<form 
+					id="taskForm"
+					onSubmit={addMyTask}
+				>
+					<textarea
+						id="new-task"
+						placeholder="enter task"
+						value={newTask}
+						onChange={e => setNewTask(e.target.value)}
+					/>
+				{/* 	<label for="room">Select a Room</label>
+					<select name="room">
+						<option value="living room">Living Room</option>
+						<option value="kitchen">Kitchen</option>
+						<option value="bathroom">Bathroom</option>
+						<option value="bedroom">Bedroom</option>
+						<option value="general">General</option>
+						<option value="other">Other</option>
+					</select>
+					<label for="difficulty">Choose Difficulty</label>
+					<select name="difficulty">
+						<option value="1">Very Easy</option>
+						<option value="2">Easy</option>
+						<option value="3">Somewhat Easy</option>
+						<option value="4">Not Easy, Not Difficult</option>
+						<option value="5">Somewhat Difficult</option>
+						<option value="6">Difficult</option>
+						<option value="7">Very Difficult</option>
+					</select>
+					<label for="estimatedTime">Estimated Time to Complete (minutes)</label>
+					<input type="number"></input> */}
+					<Button 
+						type="submit"
+						variant="contained"
+						color="secondary"
+					>
+							Add task
+					</Button>
+				</form>
         <Button
           variant="contained"
           onClick={() => nav("/Stats")}
+					color="success"
         >
-          View Completed Tasks
+          Completed Tasks
         </Button>
         <Button
         variant="contained"
+	
         onClick={() => nav("/Main")}
         >
-          Back to Main Page
+          Home
         </Button>
 			</div>
 		</>
