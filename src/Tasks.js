@@ -17,6 +17,7 @@ export const Tasks = ({addTask, tasks, originalTasks}) => {
 
 	console.log(tasks);
 
+
 	return(
 		<>
 			<div className="addTask">
@@ -29,8 +30,21 @@ export const Tasks = ({addTask, tasks, originalTasks}) => {
 									<div id="left">{x}</div>
 								 
 									<div id="right">
-										<Tooltip title="mark complete" placement="bottom"><DoneOutline className="icon"/></Tooltip>  
-										<Tooltip title="delete"><DeleteIcon className="icon" /></Tooltip>
+										<Tooltip 
+											title="mark complete" 
+											placement="bottom"
+										>
+											<DoneOutline 
+												className="icon"
+											/>
+										</Tooltip>  
+										<Tooltip 
+											title="delete"
+										>
+											<DeleteIcon 
+												className="icon" 
+											/>
+										</Tooltip>
 									</div>
 								</p>                
 							) 
@@ -61,13 +75,13 @@ export const Tasks = ({addTask, tasks, originalTasks}) => {
 					</select>
 					<label for="difficulty">Choose Difficulty</label>
 					<select name="difficulty">
-						<option value="1">Very Easy</option>
-						<option value="2">Easy</option>
-						<option value="3">Somewhat Easy</option>
-						<option value="4">Not Easy, Not Difficult</option>
-						<option value="5">Somewhat Difficult</option>
-						<option value="6">Difficult</option>
-						<option value="7">Very Difficult</option>
+						<option value="1">Easy AF</option>
+						<option value="2">Easy Enough</option>
+						<option value="3">Tolerable</option>
+						<option value="4">Meh</option>
+						<option value="5">Kinda Sucks</option>
+						<option value="6">Uggghhhh</option>
+						<option value="7">Hate It</option>
 					</select>
 					<label for="estimatedTime">Estimated Time to Complete (minutes)</label>
 					<input type="number"></input> */}
