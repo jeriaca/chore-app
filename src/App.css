@@ -54,6 +54,7 @@
   background-color: wheat;
 } */
 
+/*HOME PAGE*/
 .homePage h1 {color: rgb(36, 157, 168);}
 .homePage h2, .addTask h2 {color: rgb(55, 126, 126);}
 
@@ -61,23 +62,15 @@
 .okay {background-color: indigo;}
 .meh  {background-color: slateblue;}
 
+/*TASKS - GENERAL*/
 
-.addTask {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-}
-
-.addTask h1, .addTask h2 {
+.Tasks h1, .Tasks h2 {
   color: indigo;
 }
 
-.addTask form {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 2em;
+/*TASK FORM*/
+.Tasks form {
+  margin: 1em auto 2em auto;
 }
 
 #taskForm {
@@ -88,29 +81,50 @@
   background-color: indigo;
 }
 
-.addTask textarea {
+#taskForm textarea, #taskForm select {
   font-family: 'Poppins', sans-serif;
   font-size: 1.5em;
   text-align: left;
   width: 80%;
-  height: 1.5em;
+  height: 2.5em;
+  margin-bottom: 1em;;
 }
-.addTask label {
+
+#taskForm label {
+  display: block;
+  font-size: 1.5em;
+  color: indigo;
+
+}
+
+/*TASK TABLE*/
+
+.Tasks table {
+  margin: 1em auto 6em auto; 
+  width: 80%;
+}
+
+.Table-Heading {
+  font-size: 1.5em;  
+}
+
+.Table-Heading th {
+  padding: .5em;
+}
+
+.Table-Data {
+  font-size: 1.25em;
+  text-transform: capitalize;
+}
+
+/*QUICK EASY*/
+
+.easy {
+  padding: 1em 4em;
   font-size: 1.5em;
 }
 
-.Task-List-Item {
-  font-size: 1.5em;
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-.Task-List-Item .icon {
-  padding: 0 .25em;
-}
-
-#right {
-  padding-left: 3em;
-  align-self: flex-end;
-  
+.easy li {
+  text-align: left;
+  list-style: image("");
 }
