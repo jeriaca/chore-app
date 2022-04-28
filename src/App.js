@@ -11,7 +11,7 @@ import { Gentle } from './Gentle';
 import { Tasks } from './Tasks';
 //import { Sandbox } from './Sandbox';
 
-const task1 = {
+/* const task1 = {
   room: "kitchen",
   task: "clean countertops",
   difficulty: 2,
@@ -59,20 +59,18 @@ const completedTasks = hardCodedTaskList.filter(x => x.complete === true);
 const countOfCompletedTasks = completedTasks.length;
 const countOfActiveTasks = activeHardCodedTasks.length;
 
-const originalTasks = activeHardCodedTasks.map(taskItem => taskItem.task);
+const originalTasks = activeHardCodedTasks.map(taskItem => taskItem.task); */
 
 function App() {
 
-
-  const [tasks, setTasks] = useState(activeHardCodedTasks);
+  const [tasks, setTasks] = useState([]);
   
   const addNewTask = (newTaskToAdd) => {
     console.log(newTaskToAdd)
     setTasks(
-    
       [
         ...tasks, 
-        ...newTaskToAdd
+        newTaskToAdd
       ]
     );
   };
@@ -85,12 +83,12 @@ function App() {
         <Route path ="gentle" element={<Gentle />} />
         <Route path="quickeasy" element={<QuickEasy />} />
         <Route path="main" element={<Main />} />
-        <Route path="stats" element={
+        {/* <Route path="stats" element={
           <Stats 
             countOfCompletedTasks={countOfCompletedTasks}
             countOfActiveTasks={countOfActiveTasks}
           />
-        } />
+        } /> */}
         <Route path="tasks" element={
           <Tasks
             tasks={tasks}

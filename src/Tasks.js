@@ -15,12 +15,15 @@ export const Tasks = ({
 	const nav = useNavigate();
 
   //State of typing area
-	const [newTaskEnteredByUser, setNewTaskEnteredByUser] = useState([]);
+	const [newTaskEnteredByUser, setNewTaskEnteredByUser] = useState("");
 
 	const submitNewTask = () => {
-		addNewTask(newTaskEnteredByUser.map(x => ({
-			...x
-		})));
+		addNewTask({
+			task: newTaskEnteredByUser,
+			room: "",
+			completed: false,
+			difficulty: 1
+		});
 
 	};
 
@@ -39,7 +42,9 @@ export const Tasks = ({
 					</thead>
 					<tbody className="Table-Data">
 						{tasks.map(x => 
-								<tr>
+								<tr
+									key={x.task}
+								>
 									<td>{x.task}</td>
 									<td>{x.room}</td>
 									<td><DoneOutline className="icon"	/></td>
@@ -55,15 +60,15 @@ export const Tasks = ({
 					id="taskForm"
 					onSubmit={submitNewTask}
 				>
-					<label for="task">Task</label>
-					<textarea
+					<label>Task</label>
+					<input
 						name="task"
 						id="new-task"
 						placeholder="enter task"
 						value={newTaskEnteredByUser}
 						onChange={e => setNewTaskEnteredByUser(e.target.value)}
 					/>
-				<label for="room">Room</label>
+	{/* 			<label for="room">Room</label>
 					<select 
 						name="room"
 						value=""
@@ -75,7 +80,7 @@ export const Tasks = ({
 						<option value="bedroom">Bedroom</option>
 						<option value="general">General</option>
 						<option value="other">Other</option>
-					</select>
+					</select> */}
 					
 					{/*<label for="difficulty">Choose Difficulty</label>
 					<select name="difficulty">
