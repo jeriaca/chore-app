@@ -4,6 +4,12 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneOutline from "@mui/icons-material/DoneOutline";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
+import { MenuItem, Table, TableBody, TableCell, TableRow } from "@mui/material";
+import TableHead from "@mui/material/TableHead";
 
 export const Tasks = ({
 	tasks, 
@@ -14,96 +20,135 @@ export const Tasks = ({
 
 	const nav = useNavigate();
 
-  //State of typing area
+  //State of typing and select areas
 	const [newTaskEnteredByUser, setNewTaskEnteredByUser] = useState("");
+	const [newRoomEnteredByUser, setNewRoomEnteredByUser] = useState("");
+	const [newDifficultyEnteredByUser, setNewDifficultyEnteredByUser] = useState("")
 
 	const submitNewTask = () => {
 		addNewTask({
 			task: newTaskEnteredByUser,
-			room: "",
+			room: newRoomEnteredByUser,
 			completed: false,
-			difficulty: 1
-		});
-
+			difficulty: newDifficultyEnteredByUser
+		}); 
 	};
 
 	return(
 		<>
 			<div className="Tasks">
 				<h1>Current Tasks</h1>
-				<table>
-					<thead className="Table-Heading">
-						<tr>
-							<th scope="col">Task</th>
-							<th scope="col">Room</th>
-							<th scope="col">Done</th>
-							<th scope="col">Delete</th>
-						</tr>
-					</thead>
-					<tbody className="Table-Data">
-						{tasks.map(x => 
-								<tr
-									key={x.task}
-								>
-									<td>{x.task}</td>
-									<td>{x.room}</td>
-									<td><DoneOutline className="icon"	/></td>
-									<td><DeleteIcon className="icon" /></td>
-								</tr>
+				<Table
+					sx={{
+						width: "75%"
+					}}
+				>
+					<TableHead
+					
+					>
+						<TableRow
+								
+						>
+							<TableCell 
+								sx={{
+									fontSize: 'large', 
+									fontWeight: 'bold',
+									fontFamily: 'Poppins'
+									}}
+							>Difficulty</TableCell>
+							<TableCell>Task</TableCell>
+							<TableCell>Room</TableCell>
+							<TableCell>Done</TableCell>
+							<TableCell>Delete</TableCell>
+						</TableRow>
+					</TableHead>
+					<TableBody 
+						className="Table-Data"
+					>
+							{tasks.map(x => 
+						<TableRow
+							key={x.task}
+						>
+								<TableCell>{x.difficulty}</TableCell>
+								<TableCell>{x.task}</TableCell>
+								<TableCell>{x.room}</TableCell>
+								<TableCell>
+									<DoneOutline 
+										className="icon"	
+										onClick={() => alert("hello")}
+									/>
+								</TableCell>
+								<TableCell>
+									<DeleteIcon 
+									className="icon" 
+									onClick={() => alert("goodbye")}
+								/>
+								</TableCell>
+						</TableRow>
 							)
 						}
-					</tbody>
-				</table>
+					</TableBody>
+					
+				</Table>
 					
 				<h1>Add New Task</h1>
-				<form 
+				<FormControl
 					id="taskForm"
-					onSubmit={submitNewTask}
 				>
-					<label>Task</label>
-					<input
+					<h3>Task</h3>
+					<TextField
+						variant="outlined"
 						name="task"
 						id="new-task"
 						placeholder="enter task"
 						value={newTaskEnteredByUser}
 						onChange={e => setNewTaskEnteredByUser(e.target.value)}
 					/>
-	{/* 			<label for="room">Room</label>
-					<select 
-						name="room"
-						value=""
+					<h3>Room</h3>
+					<Select 
+						value={newRoomEnteredByUser}
+						onChange={e => setNewRoomEnteredByUser(e.target.value)}
 					>
-						<option value="">--Please select a room--</option>
-						<option value="living room">Living Room</option>
-						<option value="kitchen">Kitchen</option>
-						<option value="bathroom">Bathroom</option>
-						<option value="bedroom">Bedroom</option>
-						<option value="general">General</option>
-						<option value="other">Other</option>
-					</select> */}
+						<MenuItem value={"living room"}>Living Room</MenuItem>
+						<MenuItem value={"kitchen"}>Kitchen</MenuItem>
+						<MenuItem value={"bathroom"}>Bathroom</MenuItem>
+						<MenuItem value={"bedroom"}>Bedroom</MenuItem>
+						<MenuItem value={"general"}>General</MenuItem>
+						<MenuItem value={"other"}>Other</MenuItem>
+					</Select> 
 					
-					{/*<label for="difficulty">Choose Difficulty</label>
-					<select name="difficulty">
-						<option value="1">Easy AF</option>
-						<option value="2">Easy Enough</option>
-						<option value="3">Tolerable</option>
-						<option value="4">Meh</option>
-						<option value="5">Kinda Sucks</option>
-						<option value="6">Uggghhhh</option>
-						<option value="7">Hate It</option>
-					</select>
-					<label for="estimatedTime">Estimated Time to Complete (minutes)</label>
-					<input type="number"></input> */}
-					<Button 
-						type="submit"
-						variant="contained"
-						color="secondary"
+					<h3>Choose Difficulty</h3>
+					<Select 
+						value={newDifficultyEnteredByUser}
+						onChange={e => setNewDifficultyEnteredByUser(e.target.value)}
+						sx={{
+							mb: 6
+						}}
 					>
-							Add task
+						<MenuItem value={1}>1: Easy AF</MenuItem>
+						<MenuItem value={2}>2: Easy Enough</MenuItem>
+						<MenuItem value={3}>3: Tolerable</MenuItem>
+						<MenuItem value={4}>4: Meh</MenuItem>
+						<MenuItem value={5}>5: Kinda Sucks</MenuItem>
+						<MenuItem value={6}>6: Uggghhhh</MenuItem>
+						<MenuItem value={7}>7: Hate It</MenuItem>
+					</Select>
+					<Button 
+						variant="contained"
+						size="large"
+						onClick={submitNewTask}
+						sx={{
+							borderRadius: 4,
+							fontSize: 20,
+							fontWeight: 'bold',
+							fontFamily: 'Poppins'
+						}}
+					>
+					Add task
 					</Button>
-				</form>
+				</FormControl>
        
-			  <Button
+			 {/*  <Button
           variant="contained"
           onClick={() => nav("/Stats")}
 					color="success"
@@ -116,7 +161,7 @@ export const Tasks = ({
         onClick={() => nav("/Main")}
         >
           Home
-        </Button>
+        </Button> */}
 			</div>
 		</>
 	);
