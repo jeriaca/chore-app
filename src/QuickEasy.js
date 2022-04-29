@@ -8,6 +8,8 @@ export const QuickEasy = () => {
 		<>
 			<div className="easy">
 				<h2>Quick and Easy Tasks</h2>
+
+				<h3>Other ideas:</h3>
 				<ul>
 					<li>Tidy up one corner or surface in the room where you spend most of your time. This could simply mean clearing a side table or putting some clothes in a hamper.</li>
 				</ul>
