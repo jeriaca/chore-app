@@ -7,9 +7,16 @@ import DoneOutline from "@mui/icons-material/DoneOutline";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
-import { MenuItem, Table, TableBody, TableCell, TableRow, createTheme, } from "@mui/material";
+import { MenuItem, Table, TableBody, TableCell, TableRow } from "@mui/material";
 import TableHead from "@mui/material/TableHead";
-import { ThemeProvider } from "@emotion/react";
+
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
+
 
 
 export const Tasks = ({
@@ -26,19 +33,45 @@ export const Tasks = ({
 	const [newRoomEnteredByUser, setNewRoomEnteredByUser] = useState("");
 	const [newDifficultyEnteredByUser, setNewDifficultyEnteredByUser] = useState("")
 
+	//Set State for Deletion Confirmation
+	const [open, setOpen] = useState(false);
+
+	
+
 	const submitNewTask = () => {
+		newTaskEnteredByUser !== "" && newRoomEnteredByUser !== "" ?
 		addNewTask({
 			task: newTaskEnteredByUser,
 			room: newRoomEnteredByUser,
 			completed: false,
 			difficulty: newDifficultyEnteredByUser
-		}); 
+		})
+		: alert("Please enter a task and select a room") 
 	};
+
+	const markTaskComplete = (completedTask) => {
+		completedTask.completed = true;
+	};
+
+	//Delete Task
+	//
+	//Handles modal behavior
+	const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+		setOpen(false);
+  };
+
+	//function for task deletion
+	const deleteTask = () => {
+		console.log("hello");
+		setOpen(false);
+	}
 
 	return(
 		<>
 			<div className="Tasks">
-
 				<h1>Current Tasks</h1>
 				<Table
 					sx={{
@@ -86,27 +119,43 @@ export const Tasks = ({
 						<TableRow
 							key={x.task}
 						>
-								<TableCell>{x.difficulty}</TableCell>
-								<TableCell>{x.task}</TableCell>
-								<TableCell>{x.room}</TableCell>
-								<TableCell>
-									<DoneOutline 
-										className="icon"	
-										onClick={() => alert("hello")}
-									/>
-								</TableCell>
-								<TableCell>
-									<DeleteIcon 
-									className="icon" 
-									onClick={() => alert("goodbye")}
+							<TableCell>{x.difficulty}</TableCell>
+							<TableCell>{x.task}</TableCell>
+							<TableCell>{x.room}</TableCell>
+							<TableCell>
+								<DoneOutline 
+									className="icon"	
+									onClick={() => markTaskComplete(x)}
 								/>
-								</TableCell>
+							</TableCell>
+							<TableCell>
+								<DeleteIcon 
+								className="icon" 
+								onClick={handleClickOpen}
+							/>
+								<Dialog
+									open={open}
+									onClose={handleClose}
+									aria-labelledby="alert-dialog-title"
+									aria-describedby="alert-dialog-description"
+								>
+									<DialogTitle id="alert-dialog-title">
+										{"Permanently delete this task?"}
+									</DialogTitle>
+									<DialogActions>
+										<Button onClick={handleClose}>Do not delete</Button>
+										<Button onClick={deleteTask} autoFocus>
+											Delete
+										</Button>
+									</DialogActions>
+								</Dialog>
+							</TableCell>
 						</TableRow>
 							)
 						}
 					</TableBody>
 				</Table>
-					
+		
 				<h1>Add New Task</h1>
 				<FormControl
 					id="taskForm"

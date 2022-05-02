@@ -8,7 +8,7 @@ import { Main } from './Main';
 import { QuickEasy } from './QuickEasy';
 import { Gentle } from './Gentle';
 import { Tasks } from './Tasks';
-
+import { Stats } from './Stats';
 /* const task1 = {
   room: "kitchen",
   task: "clean countertops",
@@ -78,18 +78,12 @@ function App() {
 
   return (
     <div className="App">
-     
       <Routes>
         <Route path ="/" element={<Home />}/>
         <Route path ="gentle" element={<Gentle />} />
         <Route path="quickeasy" element={<QuickEasy />} />
         <Route path="main" element={<Main />} />
-        {/* <Route path="stats" element={
-          <Stats 
-            countOfCompletedTasks={countOfCompletedTasks}
-            countOfActiveTasks={countOfActiveTasks}
-          />
-        } /> */}
+        <Route path="stats" element={<Stats />} />
         <Route path="tasks" element={
           <Tasks
             tasks={tasks}
@@ -97,7 +91,6 @@ function App() {
           />
         } />
       </Routes>
-
     </div>
   );
 };
