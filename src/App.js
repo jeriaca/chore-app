@@ -1,15 +1,13 @@
-import { dividerClasses, Button, Breadcrumbs, Link } from '@mui/material';
+import { dividerClasses, Button, Breadcrumbs, Link, createTheme } from '@mui/material';
 import { func } from 'prop-types';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
 import { Home } from './Home';
 import { Main } from './Main';
-import { Stats } from './Stats';
 import { QuickEasy } from './QuickEasy';
 import { Gentle } from './Gentle';
 import { Tasks } from './Tasks';
-//import { Sandbox } from './Sandbox';
 
 /* const task1 = {
   room: "kitchen",
@@ -61,10 +59,12 @@ const countOfActiveTasks = activeHardCodedTasks.length;
 
 const originalTasks = activeHardCodedTasks.map(taskItem => taskItem.task); */
 
+
+
 function App() {
 
   const [tasks, setTasks] = useState([]);
-  
+
   const addNewTask = (newTaskToAdd) => {
     console.log(newTaskToAdd)
     setTasks(
@@ -78,6 +78,7 @@ function App() {
 
   return (
     <div className="App">
+     
       <Routes>
         <Route path ="/" element={<Home />}/>
         <Route path ="gentle" element={<Gentle />} />
@@ -95,14 +96,8 @@ function App() {
             addNewTask={addNewTask}
           />
         } />
-        {/* <Route path="sandbox" element={
-          <Sandbox
-            addNewTask = {addNewTask} 
-            tasks = {tasksState}
-            originalTasks = {originalTasks}
-          />
-        } /> */}
       </Routes>
+
     </div>
   );
 };

@@ -5,15 +5,16 @@ import Button from "@mui/material/Button";
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneOutline from "@mui/icons-material/DoneOutline";
 import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
-import { MenuItem, Table, TableBody, TableCell, TableRow } from "@mui/material";
+import { MenuItem, Table, TableBody, TableCell, TableRow, createTheme, } from "@mui/material";
 import TableHead from "@mui/material/TableHead";
+import { ThemeProvider } from "@emotion/react";
+
 
 export const Tasks = ({
 	tasks, 
-	addNewTask
+	addNewTask,
 }) => { 
 
 	console.log(tasks);
@@ -37,29 +38,45 @@ export const Tasks = ({
 	return(
 		<>
 			<div className="Tasks">
+
 				<h1>Current Tasks</h1>
 				<Table
 					sx={{
 						width: "75%"
 					}}
 				>
-					<TableHead
-					
-					>
-						<TableRow
-								
-						>
-							<TableCell 
+					<TableHead>
+						<TableRow>
+							<TableCell
 								sx={{
 									fontSize: 'large', 
 									fontWeight: 'bold',
-									fontFamily: 'Poppins'
-									}}
-							>Difficulty</TableCell>
-							<TableCell>Task</TableCell>
-							<TableCell>Room</TableCell>
-							<TableCell>Done</TableCell>
-							<TableCell>Delete</TableCell>
+									fontFamily: 'sans-serif'
+							}}>Difficulty</TableCell>
+							<TableCell
+							sx={{
+								fontSize: 'large', 
+								fontWeight: 'bold',
+								fontFamily: 'sans-serif'
+								}}>Task</TableCell>
+							<TableCell
+							sx={{
+								fontSize: 'large', 
+								fontWeight: 'bold',
+								fontFamily: 'sans-serif'
+								}}>Room</TableCell>
+							<TableCell
+							sx={{
+								fontSize: 'large', 
+								fontWeight: 'bold',
+								fontFamily: ''
+								}}>Done</TableCell>
+							<TableCell
+							sx={{
+								fontSize: 'large', 
+								fontWeight: 'bold',
+								fontFamily: 'sans-serif'
+								}}>Delete</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody 
@@ -88,7 +105,6 @@ export const Tasks = ({
 							)
 						}
 					</TableBody>
-					
 				</Table>
 					
 				<h1>Add New Task</h1>
@@ -141,27 +157,11 @@ export const Tasks = ({
 							borderRadius: 4,
 							fontSize: 20,
 							fontWeight: 'bold',
-							fontFamily: 'Poppins'
 						}}
 					>
 					Add task
 					</Button>
 				</FormControl>
-       
-			 {/*  <Button
-          variant="contained"
-          onClick={() => nav("/Stats")}
-					color="success"
-        >
-          Completed Tasks
-        </Button>
-        <Button
-        variant="contained"
-	
-        onClick={() => nav("/Main")}
-        >
-          Home
-        </Button> */}
 			</div>
 		</>
 	);
