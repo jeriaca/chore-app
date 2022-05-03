@@ -18,9 +18,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 
 export const Tasks = ({
-	tasks, 
+	initialTasks, 
 	addNewTask,
-	completeTask
+	completeTask,
+	tasks
 }) => { 
 
 	console.log(tasks);
