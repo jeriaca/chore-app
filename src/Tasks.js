@@ -17,11 +17,10 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
-
-
 export const Tasks = ({
 	tasks, 
 	addNewTask,
+	completeTask
 }) => { 
 
 	console.log(tasks);
@@ -36,21 +35,30 @@ export const Tasks = ({
 	//Set State for Deletion Confirmation
 	const [open, setOpen] = useState(false);
 
-	
-
 	const submitNewTask = () => {
-		newTaskEnteredByUser !== "" && newRoomEnteredByUser !== "" ?
-		addNewTask({
-			task: newTaskEnteredByUser,
-			room: newRoomEnteredByUser,
-			completed: false,
-			difficulty: newDifficultyEnteredByUser
-		})
-		: alert("Please enter a task and select a room") 
+		// newTaskEnteredByUser !== "" && newRoomEnteredByUser !== "" ? 
+			addNewTask({
+				task: newTaskEnteredByUser,
+				room: newRoomEnteredByUser,
+				completed: false,
+				difficulty: newDifficultyEnteredByUser
+			})			
+			clearFields();
+		//display an alert if a user does not enter required info.
+		// : alert("Please enter a task and select a room") 
 	};
 
-	const markTaskComplete = (completedTask) => {
-		completedTask.completed = true;
+	//clear form fields on reset or submit
+	const clearFields = () => {
+		setNewTaskEnteredByUser("");
+		setNewRoomEnteredByUser("");
+		setNewDifficultyEnteredByUser("");
+	}
+
+	const markTaskComplete = () => {
+		completeTask(
+			// completedTask.completed = true
+		);
 	};
 
 	//Delete Task
@@ -209,6 +217,18 @@ export const Tasks = ({
 						}}
 					>
 					Add task
+					</Button>
+					<Button 
+						variant="contained"
+						size="large"
+						onClick={clearFields}
+						sx={{
+							borderRadius: 4,
+							fontSize: 20,
+							fontWeight: 'bold',
+						}}
+					>
+					Clear Fields
 					</Button>
 				</FormControl>
 			</div>
