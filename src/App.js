@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
 import { Home } from './Home';
@@ -32,15 +32,16 @@ function App() {
 
           // But override completed for the task that has been passed in.
           , completed: x === taskToComplete ? true : x.completed
-        },
+        }
       )));
   };
 
   const deleteTask = (taskToDelete) => {
+    console.log(taskToDelete);
     setTasks(
       tasks.filter(tasks => tasks !==  taskToDelete)
-    ) 
-  }
+    ); 
+  };
 
 
   return (

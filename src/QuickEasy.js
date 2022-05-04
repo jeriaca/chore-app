@@ -7,12 +7,13 @@ export const QuickEasy = ({tasks}) => {
 
 	const nav = useNavigate();
 
-	const easyTasks = tasks.filter(x => x.difficulty < 4);
+	const easyTasks = tasks.filter(x => x.difficulty < 4 && x.completed !== true);
 
 	return(
 		<>
 			<div className="easy">
 				<h1>Quick and Easy Tasks</h1>
+				<h3>Here are some tasks you've identified as relatively easy:</h3>
 				
 				<ul>
 					{easyTasks.map(x => 

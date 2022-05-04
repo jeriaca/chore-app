@@ -33,20 +33,18 @@ export const Tasks = ({
 	const [newRoomEnteredByUser, setNewRoomEnteredByUser] = useState("");
 	const [newDifficultyEnteredByUser, setNewDifficultyEnteredByUser] = useState("")
 
+
 	//Set State for Deletion Confirmation
 	const [open, setOpen] = useState(false);
 
 	const submitNewTask = () => {
-		// newTaskEnteredByUser !== "" && newRoomEnteredByUser !== "" ? 
 			addNewTask({
 				task: newTaskEnteredByUser,
 				room: newRoomEnteredByUser,
 				completed: false,
 				difficulty: newDifficultyEnteredByUser
-			})			
+			})
 			clearFields();
-		//display an alert if a user does not enter required info.
-		// : alert("Please enter a task and select a room") 
 	};
 
 	//clear form fields on reset or submit
@@ -58,7 +56,6 @@ export const Tasks = ({
 
 	const markTaskComplete = (taskToComplete) => {
 		completeTask(taskToComplete);
-		
 	};
 
 	//Delete Task//
@@ -72,10 +69,10 @@ export const Tasks = ({
   };
 
 	//function for task deletion
-	const deleteThisTask = () => {
-		console.log("hello");
+	const taskDeletion = (taskToDelete) => {
+		deleteTask(taskToDelete)
 		setOpen(false);
-	}
+	};
 
 	return(
 		<>
@@ -123,13 +120,14 @@ export const Tasks = ({
 					<TableBody 
 						className="Table-Data"
 					>
-							{tasks.map(x => 
+							{tasks.filter(x => !x.completed).map(x => 
 						<TableRow
 							key={x.task}
 						>
 							<TableCell>{x.difficulty}</TableCell>
 							<TableCell>{x.task}</TableCell>
 							<TableCell>{x.room}</TableCell>
+						
 							<TableCell>
 								<DoneOutline 
 									className="icon"	
@@ -152,7 +150,7 @@ export const Tasks = ({
 									</DialogTitle>
 									<DialogActions>
 										<Button onClick={handleClose}>Do not delete</Button>
-										<Button onClick={deleteTask} autoFocus>
+										<Button onClick={() => taskDeletion(x)} autoFocus>
 											Delete
 										</Button>
 									</DialogActions>

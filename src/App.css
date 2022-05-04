@@ -3,19 +3,9 @@
   font-family: 'Poppins', sans-serif; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -26,7 +16,7 @@
 
 /* Custom Styles */
 
-.homePage button {
+.homePage button, .main button {
   width: 75%;
   margin: 1em;
   font-size: large;
@@ -39,50 +29,49 @@
 /*HOME PAGE*/
 .homePage h1 {color: rgb(36, 157, 168);}
 .homePage h2, .addTask h2 {color: rgb(55, 126, 126);}
-
+  /*home page buttons*/
 .good {background-color: #5c94ed;}
 .okay {background-color: indigo;}
 .meh  {background-color: slateblue;}
 
-/*TASKS - GENERAL*/
+/* MAIN PAGE */
+.main h1 {
+  color: indigo;
+}
+.main button, .tasks button { 
+  background-color: #5c94ed; 
+}
 
+/*TASKS - GENERAL*/
 .Tasks h1, .Tasks h2 {
   color: indigo;
 }
-
 /*TASK FORM*/
 .Tasks {
   margin: 1em auto 2em auto;
   padding: 3em;
 }
-
 #taskForm button {
   background-color: indigo;
   width: 100%;
 }
-
 #newTask {
   font-family: 'Poppins', sans-serif;
 }
-
 #taskForm h3 {
   font-size: 1.5em;
   color: indigo;
 }
-
 /*TASK TABLE*/
-
 .Tasks table {
   margin: 1em auto 6em auto; 
 }
-/*QUICK EASY*/
 
+/*QUICK EASY*/
 .easy {
   padding: 1em 4em;
   font-size: 1.5em;
 }
-
 .easy li {
   text-align: left;
-  list-style: image("");
 }
