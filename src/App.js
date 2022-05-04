@@ -81,7 +81,10 @@ function App() {
       <Routes>
         <Route path ="/" element={<Home />}/>
         <Route path ="gentle" element={<Gentle />} />
-        <Route path="quickeasy" element={<QuickEasy />} />
+        <Route path="quickeasy" element={
+          <QuickEasy 
+            tasks={tasks}
+          />} />
         <Route path="main" element={<Main />} />
         <Route path="stats" element={<Stats />} />
         <Route path="tasks" element={

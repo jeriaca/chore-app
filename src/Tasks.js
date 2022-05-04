@@ -214,6 +214,7 @@ export const Tasks = ({
 							borderRadius: 4,
 							fontSize: 20,
 							fontWeight: 'bold',
+							mb: 1
 						}}
 					>
 					Add task
@@ -226,11 +227,26 @@ export const Tasks = ({
 							borderRadius: 4,
 							fontSize: 20,
 							fontWeight: 'bold',
+							mb: 1,
 						}}
 					>
 					Clear Fields
 					</Button>
 				</FormControl>
+				<br />
+				<Button 
+					variant="contained"
+					size="large"
+					sx={{
+						borderRadius: 4,
+						fontSize: 20,
+						fontWeight: 'bold',
+						mb: 1,
+					}}
+					onClick={() => nav("/Main")}
+				>	
+					Home
+				</Button>
 			</div>
 		</>
 	);

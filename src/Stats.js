@@ -1,18 +1,20 @@
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import './App.css';
 
 export const Stats = ({countOfCompletedTasks, countOfActiveTasks}) => {
   
 	const nav = useNavigate();
 
+	const countOfCompletedTasks = tasks.filter(x => x.completed).length;
+	const countOfActiveTasks = tasks.filter(x => x.completed !== true).length; 
+
   return(
 
 		<>
-			<h2>Stats</h2>
-			Completed Tasks: {countOfCompletedTasks}
-			<br />
-			Tasks in Progress: {countOfActiveTasks}
-			<br />
+			<h1>Stats</h1>
+			<h3>Completed Tasks: {countOfCompletedTasks}</h3>
+			<h3>Tasks in Progress: {countOfActiveTasks}</h3>
 			<br />
 
 			<Button
