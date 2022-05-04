@@ -25,13 +25,22 @@ function App() {
   const completeTask = (taskToComplete) => {
 
     // Update the lifted state with all the tasks, again...
-    setTasks(tasks.map(x => ({
-      ...x 
+    setTasks(
+      tasks.map(x => (
+        {
+          ...x 
 
-      // But override completed for the task that has been passed in.
-      , completed: x === taskToComplete ? true : x.completed
-    })));
+          // But override completed for the task that has been passed in.
+          , completed: x === taskToComplete ? true : x.completed
+        },
+      )));
   };
+
+  const deleteTask = (taskToDelete) => {
+    setTasks(
+      tasks.filter(tasks => tasks !==  taskToDelete)
+    ) 
+  }
 
 
   return (
@@ -53,6 +62,7 @@ function App() {
             tasks={tasks}
             addNewTask={addNewTask}
             completeTask={completeTask}
+            deleteTask={deleteTask}
           />
         } />
       </Routes>

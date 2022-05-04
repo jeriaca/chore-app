@@ -20,7 +20,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 export const Tasks = ({
 	tasks, 
 	addNewTask,
-	completeTask
+	completeTask,
+	deleteTask
 }) => { 
 
 	console.log(tasks);
@@ -57,9 +58,10 @@ export const Tasks = ({
 
 	const markTaskComplete = (taskToComplete) => {
 		completeTask(taskToComplete);
+		
 	};
 
-	//Delete Task
+	//Delete Task//
 	//
 	//Handles modal behavior
 	const handleClickOpen = () => {
@@ -70,7 +72,7 @@ export const Tasks = ({
   };
 
 	//function for task deletion
-	const deleteTask = () => {
+	const deleteThisTask = () => {
 		console.log("hello");
 		setOpen(false);
 	}
