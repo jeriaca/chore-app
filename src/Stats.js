@@ -1,9 +1,12 @@
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-export const Stats = ({countOfCompletedTasks, countOfActiveTasks}) => {
+export const Stats = ({tasks}) => {
   
 	const nav = useNavigate();
+
+	const countOfCompletedTasks = tasks.filter(x => x.completed).length;
+	const countOfActiveTasks = tasks.length; // Probably not what you want ? ? ?
 
   return(
 

@@ -75,7 +75,17 @@ function App() {
     );
   };
 
+  const completeTask = (taskToComplete) => {
 
+    // Update the lifted state with all the tasks, again...
+    setTasks(tasks.map(x => ({
+      ...x 
+
+      // But override completed for the task that has been passed in.
+      , completed: x === taskToComplete ? true : x.completed
+    })));
+  };
+  
   return (
     <div className="App">
       <Routes>
@@ -83,11 +93,16 @@ function App() {
         <Route path ="gentle" element={<Gentle />} />
         <Route path="quickeasy" element={<QuickEasy />} />
         <Route path="main" element={<Main />} />
-        <Route path="stats" element={<Stats />} />
+        <Route path="stats" element={
+          <Stats 
+            tasks={tasks}
+          />
+        } />
         <Route path="tasks" element={
           <Tasks
             tasks={tasks}
             addNewTask={addNewTask}
+            completeTask={completeTask}
           />
         } />
       </Routes>
