@@ -16,12 +16,15 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
+import { ACTIONS } from './App.js';
+
 
 export const Tasks = ({
 	initialTasks, 
 	addNewTask,
 	completeTask,
-	tasks
+	tasks,
+	dispatch
 }) => { 
 
 	console.log(tasks);
@@ -38,12 +41,18 @@ export const Tasks = ({
 
 	const submitNewTask = () => {
 		// newTaskEnteredByUser !== "" && newRoomEnteredByUser !== "" ? 
-			addNewTask({
-				task: newTaskEnteredByUser,
+		dispatch( {
+			type: ACTIONS.ADD_TASK, 
+			payload: {
+				taskName: newTaskEnteredByUser,
 				room: newRoomEnteredByUser,
 				completed: false,
 				difficulty: newDifficultyEnteredByUser
-			})			
+			}
+		})
+			/* addNewTask({
+				
+			})	 */		
 			clearFields();
 		//display an alert if a user does not enter required info.
 		// : alert("Please enter a task and select a room") 
@@ -56,9 +65,9 @@ export const Tasks = ({
 		setNewDifficultyEnteredByUser("");
 	}
 
-	const markTaskComplete = () => {
+	const markTaskComplete = (completedTask) => {
 		completeTask(
-			// completedTask.completed = true
+			completedTask.completed = true
 		);
 	};
 
@@ -129,7 +138,7 @@ export const Tasks = ({
 							key={x.task}
 						>
 							<TableCell>{x.difficulty}</TableCell>
-							<TableCell>{x.task}</TableCell>
+							<TableCell>{x.taskName}</TableCell>
 							<TableCell>{x.room}</TableCell>
 							<TableCell>
 								<DoneOutline 

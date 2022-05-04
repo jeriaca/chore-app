@@ -58,21 +58,57 @@ const countOfActiveTasks = activeHardCodedTasks.length;
 
 const originalTasks = activeHardCodedTasks.map(taskItem => taskItem.task); */
 
+export const ACTIONS = {
+  ADD_TASK: 'add-task',
+  DELETE_TASK: 'delete-task',
+  COMPLETE_TASK: 'complete-task'
+}
+
+
 
 
 function App() {
 
+  const reducer = (tasks, action) =>{
+    switch (action.type) {
+      case ACTIONS.ADD_TASK: {
+        return [
+          ...tasks, 
+          action.task
+          /* {
+            taskName: action.taskName,
+            room: action.room,
+            completed: action.completed, 
+            difficulty: action.difficulty
+          } */
+        ];
+      }
+      case ACTIONS.COMPLETE_TASK: {
+        return tasks.map(task => {
+          if (task.taskName === action.task.taskName) {
+            return action.task;
+          } else {
+            return task;
+          }
+        });
+      }
+      case ACTIONS.DELETE_TASK: {
+        return tasks.filter(task => task.taskName !== action.task);
+      }
+      default : {
+        throw Error ('Unknown action: ' + action.type);
+      }
+    }
+  }
+
   //const [state, setState] = useState([]);
 
-  const [tasks, dispatch] = useReducer(
-    tasksReducer, 
-    tasks
-  );
+  const [tasks, dispatch] = useReducer(reducer, []);
 
   const addNewTask = (newTaskToAdd) => {
     dispatch(
       {
-        type: 'added', 
+        type: ACTIONS.ADD_TASK, 
         task: newTaskToAdd
       }
     );
@@ -80,50 +116,19 @@ function App() {
 
   const completeTask = (completedTask) => {
     dispatch({
-        type: 'completed',
+        type: ACTIONS.COMPLETE_TASK,
         task: completedTask
       });
   };
 
   const deleteTask = (taskToDelete) => {
     dispatch({
-      type: 'deleted',
+      type: ACTIONS.DELETE_TASK,
       task: taskToDelete
     });
   }
 
-  const tasksReducer = (tasks, action) =>{
-    switch (action.type) {
-      case 'added': {
-        return [
-          ...tasks, 
-          {
-            task: action.task,
-            room: action.room,
-            completed: false,
-            difficulty: action.difficulty
-          }
-        ];
-      }
-      
-      case 'completed' : {
-        return tasks.map(t => {
-          if (t.task === action.task.task) {
-            return action.task;
-          } else {
-            return t;
-          }
-        });
-      }
-
-      case 'deleted' : {
-        return tasks.filter(t => t.task !== action.task);
-      }
-      default : {
-        throw Error ('Unknown action: ' + action.type);
-      }
-    }
-  }
+  
 
   return (
     <div className="App">
@@ -138,6 +143,7 @@ function App() {
             addNewTask={addNewTask}
             completeTask={completeTask}
             tasks={tasks}
+            dispatch={dispatch}
           />
         } />
       </Routes>
