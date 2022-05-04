@@ -55,10 +55,8 @@ export const Tasks = ({
 		setNewDifficultyEnteredByUser("");
 	}
 
-	const markTaskComplete = () => {
-		completeTask(
-			// completedTask.completed = true
-		);
+	const markTaskComplete = (taskToComplete) => {
+		completeTask(taskToComplete);
 	};
 
 	//Delete Task

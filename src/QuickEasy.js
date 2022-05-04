@@ -16,7 +16,7 @@ export const QuickEasy = ({tasks}) => {
 				
 				<ul>
 					{easyTasks.map(x => 
-						<li>{x.task} the {x.room}</li>
+						<li>{x.task} in {x.room}</li>
 					)}
 				</ul>
 

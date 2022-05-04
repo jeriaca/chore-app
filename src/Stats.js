@@ -1,8 +1,7 @@
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import './App.css';
 
-export const Stats = ({countOfCompletedTasks, countOfActiveTasks}) => {
+export const Stats = ({tasks}) => {
   
 	const nav = useNavigate();
 
