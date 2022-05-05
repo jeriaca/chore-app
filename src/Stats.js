@@ -11,18 +11,19 @@ export const Stats = ({tasks}) => {
   return(
 
 		<>
-			<h1>Stats</h1>
-			<h3>Completed Tasks: {countOfCompletedTasks}</h3>
-			<h3>Tasks in Progress: {countOfActiveTasks}</h3>
-			<br />
+			<div className="stats">
+				<h1>Stats</h1>
+				<h3>Completed Tasks: {countOfCompletedTasks}</h3>
+				<h3>Tasks in Progress: {countOfActiveTasks}</h3>
+				<br />
 
-			<Button
-				variant="contained"
-				onClick={() => nav("/Main")}
-			>
-				Back to Main Menu
-			</Button>
-
+				<Button
+					variant="contained"
+					onClick={() => nav("/Main")}
+				>
+					Back to Main Menu
+				</Button>
+			</div>
 		</>
 	);
 };

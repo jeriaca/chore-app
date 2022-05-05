@@ -4,6 +4,7 @@ import { useState } from "react";
 import Button from "@mui/material/Button";
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneOutline from "@mui/icons-material/DoneOutline";
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
@@ -12,8 +13,6 @@ import TableHead from "@mui/material/TableHead";
 
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
@@ -79,37 +78,47 @@ export const Tasks = ({
 			<div className="Tasks">
 				<h1>Current Tasks</h1>
 				<Table
-					sx={{
-						width: "75%"
-					}}
+					id="task-table"
 				>
 					<TableHead>
 						<TableRow>
 							<TableCell
+								align="center"
 								sx={{
 									fontSize: 'large', 
 									fontWeight: 'bold',
 									fontFamily: 'sans-serif'
 							}}>Difficulty</TableCell>
 							<TableCell
+							align="center"
 							sx={{
 								fontSize: 'large', 
 								fontWeight: 'bold',
 								fontFamily: 'sans-serif'
 								}}>Task</TableCell>
 							<TableCell
+							align="center"
 							sx={{
 								fontSize: 'large', 
 								fontWeight: 'bold',
 								fontFamily: 'sans-serif'
 								}}>Room</TableCell>
 							<TableCell
+							align="center"
 							sx={{
 								fontSize: 'large', 
 								fontWeight: 'bold',
-								fontFamily: ''
+								fontFamily: 'sans-serif'
 								}}>Done</TableCell>
 							<TableCell
+							align="center"
+							sx={{
+								fontSize: 'large', 
+								fontWeight: 'bold',
+								fontFamily: 'sans-serif'
+								}}>Edit</TableCell>
+							<TableCell
+							align="center"
 							sx={{
 								fontSize: 'large', 
 								fontWeight: 'bold',
@@ -124,17 +133,28 @@ export const Tasks = ({
 						<TableRow
 							key={x.task}
 						>
-							<TableCell>{x.difficulty}</TableCell>
-							<TableCell>{x.task}</TableCell>
-							<TableCell>{x.room}</TableCell>
+							<TableCell align="center">{x.difficulty}</TableCell>
+							<TableCell align="center">{x.task}</TableCell>
+							<TableCell align="center">{x.room}</TableCell>
 						
-							<TableCell>
+							<TableCell 							
+								align="center"
+							>
 								<DoneOutline 
 									className="icon"	
 									onClick={() => markTaskComplete(x)}
 								/>
 							</TableCell>
-							<TableCell>
+							<TableCell
+								align="center"
+							>
+								<ModeEditIcon
+								className="icon"
+							/>
+							</TableCell>
+							<TableCell
+								align="center"
+							>
 								<DeleteIcon 
 								className="icon" 
 								onClick={handleClickOpen}
@@ -161,6 +181,14 @@ export const Tasks = ({
 						}
 					</TableBody>
 				</Table>
+				
+				<Button 
+					id="tasks-to-home"
+					variant="contained"
+					onClick={() => nav("/Main")}
+				>	
+					Home
+				</Button>
 		
 				<h1>Add New Task</h1>
 				<FormControl
@@ -205,6 +233,7 @@ export const Tasks = ({
 						<MenuItem value={7}>7: Hate It</MenuItem>
 					</Select>
 					<Button 
+						id="add-task"
 						variant="contained"
 						size="large"
 						onClick={submitNewTask}
@@ -218,6 +247,7 @@ export const Tasks = ({
 					Add task
 					</Button>
 					<Button 
+						id="clear"
 						variant="contained"
 						size="large"
 						onClick={clearFields}
@@ -232,19 +262,6 @@ export const Tasks = ({
 					</Button>
 				</FormControl>
 				<br />
-				<Button 
-					variant="contained"
-					size="large"
-					sx={{
-						borderRadius: 4,
-						fontSize: 20,
-						fontWeight: 'bold',
-						mb: 1,
-					}}
-					onClick={() => nav("/Main")}
-				>	
-					Home
-				</Button>
 			</div>
 		</>
 	);

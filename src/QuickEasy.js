@@ -9,14 +9,15 @@ export const QuickEasy = ({tasks}) => {
 
 	const easyTasks = tasks.filter(x => x.difficulty < 4 && x.completed !== true);
 
+	console.log(easyTasks)
+
 	return(
 		<>
 			<div className="easy">
 				<h1>Quick and Easy Tasks</h1>
-				<h3>Here are some tasks you've identified as relatively easy:</h3>
-				
+				<h3>Active Tasks:</h3>
 				<ul>
-					{easyTasks.map(x => 
+					{easyTasks.map(x => 				
 						<li>{x.task} in {x.room}</li>
 					)}
 				</ul>
