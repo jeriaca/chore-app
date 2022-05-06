@@ -46,6 +46,15 @@
 .Tasks h1, .Tasks h2 {
   color: indigo;
 }
+.Tasks h1 {
+  margin-bottom: 5px;
+}
+.Tasks p {
+  margin-top: 0px;
+  font-size: 12px;
+  margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.54);
+}
 /*TASK FORM*/
 .Tasks {
   margin: 1em auto 2em auto;
@@ -68,14 +77,17 @@
   margin-top: .75em;
 }
 #tasks-to-home {
-  margin-top: 2em;
+  margin-top: .5em;
 }
 /*TASK TABLE*/
 #task-table th, #task-table td {
   padding: 10px;
 }
 .Tasks table {
-  margin: 1em auto 6em auto; 
+  margin: 1em auto 3em auto; 
+}
+#task-in-table {
+  color: indigo;
 }
 
 /*QUICK EASY*/

@@ -1,29 +1,32 @@
 import { useNavigate } from "react-router-dom";
+
 import { useState } from "react";
 
 import Button from "@mui/material/Button";
-import DeleteIcon from '@mui/icons-material/Delete';
-import DoneOutline from "@mui/icons-material/DoneOutline";
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
-import { MenuItem, Table, TableBody, TableCell, TableRow } from "@mui/material";
+import MenuItem from "@mui/material/MenuItem";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell"; 
+import TableRow from "@mui/material/TableRow";
 import TableHead from "@mui/material/TableHead";
-
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import DoneOutline from "@mui/icons-material/DoneOutline";
 
 
 export const Tasks = ({
 	tasks, 
 	addNewTask,
 	completeTask,
-	deleteTask
+	deleteTask,
+	// editTask
 }) => { 
-
-	console.log(tasks);
 
 	const nav = useNavigate();
 
@@ -32,10 +35,10 @@ export const Tasks = ({
 	const [newRoomEnteredByUser, setNewRoomEnteredByUser] = useState("");
 	const [newDifficultyEnteredByUser, setNewDifficultyEnteredByUser] = useState("")
 
-
-	//Set State for Deletion Confirmation
+	//Set State for Modal
 	const [open, setOpen] = useState(false);
 
+	//Submit New Task
 	const submitNewTask = () => {
 			addNewTask({
 				task: newTaskEnteredByUser,
@@ -46,19 +49,13 @@ export const Tasks = ({
 			clearFields();
 	};
 
-	//clear form fields on reset or submit
+	//Clear form fields on reset or submit
 	const clearFields = () => {
 		setNewTaskEnteredByUser("");
 		setNewRoomEnteredByUser("");
 		setNewDifficultyEnteredByUser("");
 	}
 
-	const markTaskComplete = (taskToComplete) => {
-		completeTask(taskToComplete);
-	};
-
-	//Delete Task//
-	//
 	//Handles modal behavior
 	const handleClickOpen = () => {
     setOpen(true);
@@ -66,17 +63,27 @@ export const Tasks = ({
   const handleClose = () => {
 		setOpen(false);
   };
-
-	//function for task deletion
+	//Function for task deletion
 	const taskDeletion = (taskToDelete) => {
 		deleteTask(taskToDelete)
 		setOpen(false);
 	};
+	//Function for task completion
+	const markTaskComplete = (taskToComplete) => {
+		completeTask(taskToComplete);
+		setOpen(false);
+	};
+	//Function for task editing
+	/* const taskEditing = (taskToEdit) => {
+		editTask(taskToEdit);
+		setOpen(false);
+	}; */
 
 	return(
 		<>
 			<div className="Tasks">
 				<h1>Current Tasks</h1>
+				{/* <p>To edit, delete, or mark complete, click <ModeEditIcon color="primary" fontSize="small"/>.</p> */}
 				<Table
 					id="task-table"
 				>
@@ -85,94 +92,77 @@ export const Tasks = ({
 							<TableCell
 								align="center"
 								sx={{
-									fontSize: 'large', 
+									fontSize: 'medium', 
 									fontWeight: 'bold',
 									fontFamily: 'sans-serif'
-							}}>Difficulty</TableCell>
+							}}>
+								Difficulty
+							</TableCell>
 							<TableCell
-							align="center"
-							sx={{
-								fontSize: 'large', 
-								fontWeight: 'bold',
-								fontFamily: 'sans-serif'
-								}}>Task</TableCell>
+								align="center"
+								sx={{
+									fontSize: 'medium', 
+									fontWeight: 'bold',
+									fontFamily: 'sans-serif'
+								}}>
+									Task
+								</TableCell>
 							<TableCell
-							align="center"
-							sx={{
-								fontSize: 'large', 
-								fontWeight: 'bold',
-								fontFamily: 'sans-serif'
-								}}>Room</TableCell>
+								align="center"
+								sx={{
+									fontSize: 'medium', 
+									fontWeight: 'bold',
+									fontFamily: 'sans-serif'
+								}}>
+									Room
+								</TableCell>
 							<TableCell
-							align="center"
-							sx={{
-								fontSize: 'large', 
-								fontWeight: 'bold',
-								fontFamily: 'sans-serif'
-								}}>Done</TableCell>
-							<TableCell
-							align="center"
-							sx={{
-								fontSize: 'large', 
-								fontWeight: 'bold',
-								fontFamily: 'sans-serif'
-								}}>Edit</TableCell>
-							<TableCell
-							align="center"
-							sx={{
-								fontSize: 'large', 
-								fontWeight: 'bold',
-								fontFamily: 'sans-serif'
-								}}>Delete</TableCell>
+								align="center"
+								sx={{
+									fontSize: 'medium', 
+									fontWeight: 'bold',
+									fontFamily: 'sans-serif'
+								}}>
+									Complete
+								</TableCell>
 						</TableRow>
 					</TableHead>
-					<TableBody 
-						className="Table-Data"
-					>
+					<TableBody className="Table-Data">
 							{tasks.filter(x => !x.completed).map(x => 
-						<TableRow
-							key={x.task}
-						>
+						<TableRow key={x.task}>
 							<TableCell align="center">{x.difficulty}</TableCell>
 							<TableCell align="center">{x.task}</TableCell>
 							<TableCell align="center">{x.room}</TableCell>
-						
-							<TableCell 							
-								align="center"
-							>
-								<DoneOutline 
-									className="icon"	
-									onClick={() => markTaskComplete(x)}
+							<TableCell align="center">
+								<DoneOutline
+									color="primary" 
+									onClick={handleClickOpen} 
 								/>
-							</TableCell>
-							<TableCell
-								align="center"
-							>
-								<ModeEditIcon
-								className="icon"
-							/>
-							</TableCell>
-							<TableCell
-								align="center"
-							>
-								<DeleteIcon 
-								className="icon" 
-								onClick={handleClickOpen}
-							/>
 								<Dialog
 									open={open}
 									onClose={handleClose}
-									aria-labelledby="alert-dialog-title"
-									aria-describedby="alert-dialog-description"
+									aria-labelledby="Edit or Delete"
+									aria-describedby="edit, delete or mark task complete"
 								>
 									<DialogTitle id="alert-dialog-title">
-										{"Permanently delete this task?"}
+										{"What would you like to do?"}
 									</DialogTitle>
 									<DialogActions>
-										<Button onClick={handleClose}>Do not delete</Button>
-										<Button onClick={() => taskDeletion(x)} autoFocus>
-											Delete
+										<Button onClick={handleClose}>Close</Button>
+										<Button onClick={() => taskDeletion(x)}>Delete Task</Button>
+										<Button 
+											onClick={() => markTaskComplete(x)} 
+											variant="contained"
+											color="success"
+											sx={{
+												fontWeight: 'bold',
+											}}
+											
+											autofocus
+										>
+											Mark Task Complete
 										</Button>
+										{/* <Button onClick={() => taskEditing(x)}>Edit Task</Button> */}
 									</DialogActions>
 								</Dialog>
 							</TableCell>
@@ -181,7 +171,6 @@ export const Tasks = ({
 						}
 					</TableBody>
 				</Table>
-				
 				<Button 
 					id="tasks-to-home"
 					variant="contained"
@@ -189,11 +178,12 @@ export const Tasks = ({
 				>	
 					Home
 				</Button>
-		
+
 				<h1>Add New Task</h1>
 				<FormControl
 					id="taskForm"
 				>
+
 					<h3>Task</h3>
 					<TextField
 						variant="outlined"
@@ -203,6 +193,7 @@ export const Tasks = ({
 						value={newTaskEnteredByUser}
 						onChange={e => setNewTaskEnteredByUser(e.target.value)}
 					/>
+
 					<h3>Room</h3>
 					<Select 
 						value={newRoomEnteredByUser}
@@ -232,6 +223,7 @@ export const Tasks = ({
 						<MenuItem value={6}>6: Uggghhhh</MenuItem>
 						<MenuItem value={7}>7: Hate It</MenuItem>
 					</Select>
+
 					<Button 
 						id="add-task"
 						variant="contained"
