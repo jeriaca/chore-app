@@ -126,7 +126,9 @@ export const Tasks = ({
 					</TableHead>
 					<TableBody className="Table-Data">
 							{tasks.filter(x => !x.completed).map(x => 
-						<TableRow key={x.task}>
+						<TableRow 
+							key={x.task}
+						>
 							<TableCell align="center">{x.difficulty}</TableCell>
 							<TableCell align="center">{x.task}</TableCell>
 							<TableCell align="center">{x.room}</TableCell>
@@ -175,12 +177,11 @@ export const Tasks = ({
 				>	
 					Home
 				</Button>
-
-				<h1>Add New Task</h1>
+				<hr />
+				<h1 id="add-task-heading">Add New Task</h1>
 				<FormControl
 					id="taskForm"
 				>
-
 					<h3>Task</h3>
 					<TextField
 						variant="outlined"

@@ -24,7 +24,7 @@ export const Main = () => {
 					variant="contained"
 					onClick={() => 	nav("/QuickEasy")}
 				>
-					Quick and Easy Tasks
+					Easyish Tasks
 				</Button>
 			</div>
 		</>

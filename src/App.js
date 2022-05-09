@@ -61,6 +61,7 @@ function App() {
         <Route path="quickeasy" element={
           <QuickEasy 
             tasks={tasks}
+            duplicateTask={duplicateTask}
           />} />
         <Route path="main" element={<Main />} />
         <Route path="completed" element={
