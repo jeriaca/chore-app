@@ -114,3 +114,17 @@
   background-color: white;
   color: rgb(36, 157, 168);
 }
+.stats h2 {
+  color: rgb(36, 157, 168);
+  margin-top: 3em;
+}
+.stats p {
+  font-size: 1.25em;
+}
+.stats span {
+  color: red;
+}
+#note-this {
+  font-size: .75em;
+  color: red;
+}

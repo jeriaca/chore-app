@@ -9,15 +9,15 @@ import TableHead from "@mui/material/TableHead";
 
 import ContentCopy from "@mui/icons-material/ContentCopy";
 
-export const Stats = ({
+export const Completed = ({
 	tasks,
 	duplicateTask
 }) => {
   
 	const nav = useNavigate();
 
-	//const countOfCompletedTasks = tasks.filter(x => x.completed).length;
-	//const countOfActiveTasks = tasks.filter(x => x.completed !== true).length; 
+	const countOfCompletedTasks = tasks.filter(x => x.completed).length;
+	const countOfActiveTasks = tasks.filter(x => x.completed !== true).length; 
 
 	const taskDuplication = (taskToDuplicate) => {
 		duplicateTask(taskToDuplicate);
@@ -25,10 +25,9 @@ export const Stats = ({
 	};
 
   return(
-
 		<>
 			<div className="stats">
-							<h1>Completed Tasks</h1>
+				<h1>Completed Tasks</h1>
 				<Table
 					id="stats-table"
 				>
@@ -102,6 +101,10 @@ export const Stats = ({
 				>
 					Back to Main Menu
 				</Button>
+				<h2>Your Stats</h2>
+				<p>Completed Tasks<span>*</span>: {countOfCompletedTasks}</p>
+				<p>Active Tasks: {countOfActiveTasks}</p>
+				<p id="note-this">*does not include tasks you've duplicated</p>
 			</div>
 		</>
 	);

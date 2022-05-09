@@ -16,9 +16,9 @@ export const Main = () => {
 				</Button>
 				<Button
 					variant="contained"
-					onClick={() => nav("/Stats")}
+					onClick={() => nav("/Completed")}
 				>
-					View Stats
+					View Completed Tasks
 				</Button>
 				<Button
 					variant="contained"

@@ -23,7 +23,6 @@ export const Tasks = ({
 	addNewTask,
 	completeTask,
 	deleteTask,
-	// editTask
 }) => { 
 
 	const nav = useNavigate();

@@ -4,8 +4,9 @@ import {Routes, Route} from 'react-router-dom';
 import { Home } from './Home';
 import { Main } from './Main';
 import { QuickEasy } from './QuickEasy';
+import { Completed } from './Completed';
 import { Tasks } from './Tasks';
-import { Stats } from './Stats';
+
 
 function App() {
 
@@ -62,8 +63,8 @@ function App() {
             tasks={tasks}
           />} />
         <Route path="main" element={<Main />} />
-        <Route path="stats" element={
-          <Stats 
+        <Route path="completed" element={
+          <Completed 
             tasks={tasks}
             duplicateTask={duplicateTask}
           />} />
