@@ -35,6 +35,17 @@ function App() {
       )));
   };
 
+  const duplicateTask = (taskToDuplicate) => {
+    console.log('app ', taskToDuplicate)
+    setTasks(
+      tasks.map(x => (
+        {
+          ...x 
+         , completed: x === taskToDuplicate ? false : x.completed
+        }
+      )));
+  };
+
   const deleteTask = (taskToDelete) => {
     console.log(taskToDelete);
     setTasks(
@@ -54,6 +65,7 @@ function App() {
         <Route path="stats" element={
           <Stats 
             tasks={tasks}
+            duplicateTask={duplicateTask}
           />} />
         <Route path="tasks" element={
           <Tasks

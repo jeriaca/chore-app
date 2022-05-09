@@ -16,7 +16,7 @@
 
 /* Custom Styles */
 
-.homePage button, .main button, .easy button, .stats button, #tasks-to-home {
+.homePage button, .main button, .easy button, #tasks-to-home {
   width: 75%;
   margin: 1em;
   font-size: large;
@@ -35,10 +35,10 @@
 .meh  {background-color: slateblue;}
 
 /* MAIN PAGE */
-.main h1, .stats h1 {
+.main h1 {
   color: indigo;
 }
-.main button, .tasks button, .easy button, .stats button, #tasks-to-home { 
+.main button, .tasks button, .easy button, #tasks-to-home { 
   background-color: #5c94ed; 
 }
 
@@ -93,8 +93,24 @@
 /*QUICK EASY*/
 .easy {
   padding: 1em 4em;
-  font-size: 1.5em;
 }
 .easy li {
   text-align: left;
+}
+
+/*STATS*/
+.stats h1 {color: slateblue;}
+.stats button {
+  background-color: rgb(36, 157, 168);
+  margin: 1em;
+  font-size: large;
+  padding: 1em;
+  color: white;
+  font-weight: bold;
+  border-radius: 4em;
+}
+
+.stats button:hover {
+  background-color: white;
+  color: rgb(36, 157, 168);
 }

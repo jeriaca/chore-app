@@ -16,9 +16,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DoneOutline from "@mui/icons-material/DoneOutline";
-
 
 export const Tasks = ({
 	tasks, 
