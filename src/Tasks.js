@@ -37,6 +37,7 @@ export const Tasks = ({
 
 	//Submit New Task
 	const submitNewTask = () => {
+			newTaskEnteredByUser === "" ? alert("enter a task") :
 			addNewTask({
 				task: newTaskEnteredByUser,
 				room: newRoomEnteredByUser,
