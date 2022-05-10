@@ -12,9 +12,6 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell"; 
 import TableRow from "@mui/material/TableRow";
 import TableHead from "@mui/material/TableHead";
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogTitle from '@mui/material/DialogTitle';
 
 import DoneOutline from "@mui/icons-material/DoneOutline";
 
@@ -22,7 +19,6 @@ export const Tasks = ({
 	tasks, 
 	addNewTask,
 	completeTask,
-	deleteTask,
 }) => { 
 
 	const nav = useNavigate();
@@ -31,9 +27,6 @@ export const Tasks = ({
 	const [newTaskEnteredByUser, setNewTaskEnteredByUser] = useState("");
 	const [newRoomEnteredByUser, setNewRoomEnteredByUser] = useState("");
 	const [newDifficultyEnteredByUser, setNewDifficultyEnteredByUser] = useState("")
-
-	//Set State for Modal
-	const [open, setOpen] = useState(false);
 
 	//Submit New Task
 	const submitNewTask = () => {
@@ -54,34 +47,15 @@ export const Tasks = ({
 		setNewDifficultyEnteredByUser("");
 	}
 
-	//Handles modal behavior
-	const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-		setOpen(false);
-  };
-	//Function for task deletion
-	const taskDeletion = (taskToDelete) => {
-		deleteTask(taskToDelete)
-		setOpen(false);
-	};
 	//Function for task completion
 	const markTaskComplete = (taskToComplete) => {
 		completeTask(taskToComplete);
-		setOpen(false);
 	};
-	//Function for task editing
-	/* const taskEditing = (taskToEdit) => {
-		editTask(taskToEdit);
-		setOpen(false);
-	}; */
 
 	return(
 		<>
 			<div className="Tasks">
 				<h1>Current Tasks</h1>
-				{/* <p>To edit, delete, or mark complete, click <ModeEditIcon color="primary" fontSize="small"/>.</p> */}
 				<Table
 					id="task-table"
 				>
@@ -136,35 +110,9 @@ export const Tasks = ({
 							<TableCell align="center">
 								<DoneOutline
 									color="primary" 
-									onClick={handleClickOpen} 
+									// onClick={handleClickOpen} 
+									onClick={() => markTaskComplete(x)}
 								/>
-								<Dialog
-									open={open}
-									onClose={handleClose}
-									aria-labelledby="Edit or Delete"
-									aria-describedby="edit, delete or mark task complete"
-								>
-									<DialogTitle id="alert-dialog-title">
-										{"What would you like to do?"}
-									</DialogTitle>
-									<DialogActions>
-										<Button onClick={handleClose}>Close</Button>
-										<Button onClick={() => taskDeletion(x)}>Delete Task</Button>
-										<Button 
-											onClick={() => markTaskComplete(x)} 
-											variant="contained"
-											color="success"
-											sx={{
-												fontWeight: 'bold',
-											}}
-											
-											autofocus
-										>
-											Mark Task Complete
-										</Button>
-										{/* <Button onClick={() => taskEditing(x)}>Edit Task</Button> */}
-									</DialogActions>
-								</Dialog>
 							</TableCell>
 						</TableRow>
 							)
@@ -214,13 +162,13 @@ export const Tasks = ({
 							mb: 6
 						}}
 					>
-						<MenuItem value={1}>1: Easy AF</MenuItem>
+						<MenuItem value={1}>1: Easy</MenuItem>
 						<MenuItem value={2}>2: Easy Enough</MenuItem>
 						<MenuItem value={3}>3: Tolerable</MenuItem>
 						<MenuItem value={4}>4: Meh</MenuItem>
 						<MenuItem value={5}>5: Kinda Sucks</MenuItem>
 						<MenuItem value={6}>6: Uggghhhh</MenuItem>
-						<MenuItem value={7}>7: Hate It</MenuItem>
+						<MenuItem value={7}>7: The Worst</MenuItem>
 					</Select>
 
 					<Button 
