@@ -67,7 +67,7 @@ export const Completed = ({
 									fontWeight: 'bold',
 									fontFamily: 'sans-serif'
 								}}>
-									Duplicate Task
+									Add To Active Tasks
 								</TableCell>
 						</TableRow>
 					</TableHead>

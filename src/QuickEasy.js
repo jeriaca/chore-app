@@ -33,7 +33,7 @@ export const QuickEasy = ({
 					)}
 		
 				<h3>Previously Completed Easyish Tasks:</h3>
-				<h4>(click icon to add this task to your active tasks)</h4>  
+				<h4>(click icon to add this task back to your active tasks)</h4>  
 					{easyCompletedTasks.map(x => x.room !== "other" && x.room !== "general" ?				
 						<p>
 							–{x.task} in {x.room} 
