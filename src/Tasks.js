@@ -18,7 +18,7 @@ import DoneOutline from "@mui/icons-material/DoneOutline";
 export const Tasks = ({
 	tasks, 
 	addNewTask,
-	completeTask,
+	completeTask
 }) => { 
 
 	const nav = useNavigate();
@@ -32,7 +32,6 @@ export const Tasks = ({
 	const submitNewTask = () => {
 			newTaskEnteredByUser === "" ? alert("enter a task") :
 			addNewTask({
-				key: newTaskEnteredByUser + newRoomEnteredByUser,
 				task: newTaskEnteredByUser,
 				room: newRoomEnteredByUser,
 				completed: false,
@@ -103,7 +102,7 @@ export const Tasks = ({
 					<TableBody className="Table-Data">
 							{tasks.filter(x => !x.completed).map(x => 
 						<TableRow 
-							key={x.key}
+							key={x.task + x.room}
 						>
 							<TableCell align="center">{x.difficulty}</TableCell>
 							<TableCell align="center">{x.task}</TableCell>

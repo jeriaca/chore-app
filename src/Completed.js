@@ -73,7 +73,9 @@ export const Completed = ({
 					</TableHead>
 					<TableBody className="Table-Data">
 							{tasks.filter(x => x.completed).map(x => 
-						<TableRow key={x.task}>
+						<TableRow 
+							key={x.task + x.room}
+						>
 							<TableCell align="center">{x.difficulty}</TableCell>
 							<TableCell align="center">{x.task}</TableCell>
 							<TableCell align="center">{x.room}</TableCell>
@@ -104,7 +106,7 @@ export const Completed = ({
 				<h2>Your Stats</h2>
 				<p>Completed Tasks<span>*</span>: {countOfCompletedTasks}</p>
 				<p>Active Tasks: {countOfActiveTasks}</p>
-				<p id="note-this">*does not include tasks you've duplicated</p>
+				<p id="note-this">*does not include tasks you've added back to active tasks</p>
 			</div>
 		</>
 	);
