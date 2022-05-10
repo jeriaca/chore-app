@@ -30,15 +30,20 @@ export const Tasks = ({
 
 	//Submit New Task
 	const submitNewTask = () => {
-			newTaskEnteredByUser === "" ? alert("enter a task") :
+		//Check to see if user entered anything. If not, alert them to do so	
+		newTaskEnteredByUser === "" ? alert("enter a task") :
+			tasks.map(x => x.task + x.room === newTaskEnteredByUser + newRoomEnteredByUser) ? 
+			alert("Entered task must be unique. Check Completed Tasks to see if task is available to reactivate.") 
+			:
 			addNewTask({
 				task: newTaskEnteredByUser,
 				room: newRoomEnteredByUser,
 				completed: false,
 				difficulty: newDifficultyEnteredByUser
 			})
-			clearFields();
-	};
+			clearFields(); 
+		};
+
 
 	//Clear form fields on reset or submit
 	const clearFields = () => {
