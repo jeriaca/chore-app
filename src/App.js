@@ -3,7 +3,7 @@ import './App.css';
 import {Routes, Route} from 'react-router-dom';
 import { Home } from './Home';
 import { Main } from './Main';
-import { QuickEasy } from './QuickEasy';
+import { Easyish } from './Easyish';
 import { Completed } from './Completed';
 import { Tasks } from './Tasks';
 
@@ -53,8 +53,8 @@ function App() {
     <div className="App">
       <Routes>
         <Route path ="/" element={<Home />}/>
-        <Route path="quickeasy" element={
-          <QuickEasy 
+        <Route path="easyish" element={
+          <Easyish 
             tasks={tasks}
             duplicateTask={duplicateTask}
           />} />

@@ -4,7 +4,7 @@ import ContentCopy from '@mui/icons-material/ContentCopy';
 
 import './App.css';
 
-export const QuickEasy = ({
+export const Easyish = ({
 		tasks,
 		duplicateTask
 	}) => {
@@ -16,8 +16,8 @@ export const QuickEasy = ({
 		console.log(taskToDuplicate)
 	};
 
-	const easyTasks = tasks.filter(x => x.difficulty < 4 && x.completed !== true);
-	const easyCompletedTasks = tasks.filter(x => x.difficulty < 4 && x.completed === true);
+	const easyTasks = tasks.filter(x => x.difficulty < 3 && x.completed !== true);
+	const easyCompletedTasks = tasks.filter(x => x.difficulty < 3 && x.completed === true);
 
 	return(
 		<>
@@ -26,7 +26,7 @@ export const QuickEasy = ({
 				<h4>Feeling overwhelemed? Don't want to do anything, but you feel the need to do something? Here's some task ideas that suck slightly less than most other things.</h4>
 				<h3>Easyish Active Tasks:</h3>
 					{easyTasks.map(x => 
-						x.room !== "other" && x.room !== "general" ?				
+						x.room !== "other" ?				
 						<p>-{x.task} in {x.room}</p>
 						:
 						<p>-{x.task}</p>
@@ -34,7 +34,7 @@ export const QuickEasy = ({
 		
 				<h3>Previously Completed Easyish Tasks:</h3>
 				<h4>(click icon to add this task back to your active tasks)</h4>  
-					{easyCompletedTasks.map(x => x.room !== "other" && x.room !== "general" ?				
+					{easyCompletedTasks.map(x => x.room !== "other" ?				
 						<p>
 							–{x.task} in {x.room} 
 								<ContentCopy

@@ -31,10 +31,7 @@ export const Tasks = ({
 	//Submit New Task
 	const submitNewTask = () => {
 		//Check to see if user entered anything. If not, alert them to do so	
-		newTaskEnteredByUser === "" ? alert("enter a task") :
-			tasks.map(x => x.task + x.room === newTaskEnteredByUser + newRoomEnteredByUser) ? 
-			alert("Entered task must be unique. Check Completed Tasks to see if task is available to reactivate.") 
-			:
+		newTaskEnteredByUser === "" ? alert("you must enter a task") :
 			addNewTask({
 				task: newTaskEnteredByUser,
 				room: newRoomEnteredByUser,
@@ -137,10 +134,11 @@ export const Tasks = ({
 				>
 					<h3>Task</h3>
 					<TextField
+						required
 						variant="outlined"
 						name="task"
 						id="new-task"
-						placeholder="enter task"
+						placeholder="enter a task"
 						value={newTaskEnteredByUser}
 						onChange={e => setNewTaskEnteredByUser(e.target.value)}
 					/>
@@ -154,8 +152,7 @@ export const Tasks = ({
 						<MenuItem value={"kitchen"}>Kitchen</MenuItem>
 						<MenuItem value={"bathroom"}>Bathroom</MenuItem>
 						<MenuItem value={"bedroom"}>Bedroom</MenuItem>
-						<MenuItem value={"general"}>General</MenuItem>
-						<MenuItem value={"other"}>Other</MenuItem>
+						<MenuItem value={"other"}>Other/None</MenuItem>
 					</Select> 
 					
 					<h3>Choose Difficulty</h3>
@@ -167,12 +164,10 @@ export const Tasks = ({
 						}}
 					>
 						<MenuItem value={1}>1: Easy</MenuItem>
-						<MenuItem value={2}>2: Easy Enough</MenuItem>
-						<MenuItem value={3}>3: Tolerable</MenuItem>
-						<MenuItem value={4}>4: Meh</MenuItem>
-						<MenuItem value={5}>5: Kinda Sucks</MenuItem>
-						<MenuItem value={6}>6: Uggghhhh</MenuItem>
-						<MenuItem value={7}>7: The Worst</MenuItem>
+						<MenuItem value={2}>2: Tolerable</MenuItem>
+						<MenuItem value={3}>3: Meh</MenuItem>
+						<MenuItem value={4}>4: Kinda Sucks</MenuItem>
+						<MenuItem value={5}>5: The Worst</MenuItem>
 					</Select>
 
 					<Button 
