@@ -26,12 +26,13 @@ export const Tasks = ({
   //State of typing and select areas
 	const [newTaskEnteredByUser, setNewTaskEnteredByUser] = useState("");
 	const [newRoomEnteredByUser, setNewRoomEnteredByUser] = useState("");
-	const [newDifficultyEnteredByUser, setNewDifficultyEnteredByUser] = useState("")
+	const [newDifficultyEnteredByUser, setNewDifficultyEnteredByUser] = useState("");
 
 	//Submit New Task
 	const submitNewTask = () => {
 			newTaskEnteredByUser === "" ? alert("enter a task") :
 			addNewTask({
+				key: newTaskEnteredByUser + newRoomEnteredByUser,
 				task: newTaskEnteredByUser,
 				room: newRoomEnteredByUser,
 				completed: false,
@@ -102,7 +103,7 @@ export const Tasks = ({
 					<TableBody className="Table-Data">
 							{tasks.filter(x => !x.completed).map(x => 
 						<TableRow 
-							key={x.task}
+							key={x.key}
 						>
 							<TableCell align="center">{x.difficulty}</TableCell>
 							<TableCell align="center">{x.task}</TableCell>
@@ -110,7 +111,6 @@ export const Tasks = ({
 							<TableCell align="center">
 								<DoneOutline
 									color="primary" 
-									// onClick={handleClickOpen} 
 									onClick={() => markTaskComplete(x)}
 								/>
 							</TableCell>
