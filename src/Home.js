@@ -23,7 +23,7 @@ export const Home = () => {
 						</button>
 						<button
 							className="meh" 
-							onClick={() => 	nav("/QuickEasy")}
+							onClick={() => 	nav("/Easyish")}
 						>
 							Meh.
 						</button>

@@ -22,7 +22,7 @@ export const Main = () => {
 				</Button>
 				<Button
 					variant="contained"
-					onClick={() => 	nav("/QuickEasy")}
+					onClick={() => 	nav("/Easyish")}
 				>
 					Easyish Tasks
 				</Button>
