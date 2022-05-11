@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/chore-app/static/css/main.672f3310.css",
-    "main.js": "/chore-app/static/js/main.01dee82f.js",
+    "main.js": "/chore-app/static/js/main.ff2ba3f0.js",
     "static/js/787.ebea7d6d.chunk.js": "/chore-app/static/js/787.ebea7d6d.chunk.js",
     "index.html": "/chore-app/index.html",
     "main.672f3310.css.map": "/chore-app/static/css/main.672f3310.css.map",
-    "main.01dee82f.js.map": "/chore-app/static/js/main.01dee82f.js.map",
+    "main.ff2ba3f0.js.map": "/chore-app/static/js/main.ff2ba3f0.js.map",
     "787.ebea7d6d.chunk.js.map": "/chore-app/static/js/787.ebea7d6d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.672f3310.css",
-    "static/js/main.01dee82f.js"
+    "static/js/main.ff2ba3f0.js"
   ]
 }
