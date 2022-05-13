@@ -67,7 +67,7 @@ export const Easyish = ({
 				<p>-If you're not sensitive to scents and you can afford to do so, sometimes buying a cleaning product in a new or pleasant scent is a nice incentive to clean up. Lavender is especially pleasant and supposedly helps with anxiety and depression. (Don't take a huge wiff of anything though. You might anger your sinuses or barf.) </p>
 				<hr />
 				<h5>
-					Don't forget...you are NOT what you've accomplished in a day. Even if you do diddy squat, you are more than likely doing your best.
+					Don't forget...you are NOT what you've accomplished in a day. Even if you don't do diddly-squat, you are more than likely doing your best.
 					And that's good enough. Seriously. It is. Will some dirty dishes in your sink matter in five years? Probably not (as long as you
 					do them within the next four years or so).
 				</h5>
